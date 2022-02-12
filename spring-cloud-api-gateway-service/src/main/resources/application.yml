@@ -1,0 +1,26 @@
+server:
+  port: ${port:8763}
+
+spring:
+  application:
+    name: spring-cloud-api-gateway-service
+  output:
+    ansi:
+      enabled: ALWAYS
+  cloud:
+    gateway:
+      routes:
+        - id: stock-enquiry
+          uri: http://localhost:8300/
+          predicates:
+            - Path=/product-enquiry/**
+  main:
+    web-application-type: reactive
+
+# EXAMPLE ROUTES
+# path
+# http://localhost:8200//check-product-stock/name/Helmet/availability/yes
+# 1. using defined product enquiry path with eureka client (load balancer included)
+# http://localhost:8300/product-enquiry/name/Trousers/availability/no/unit/10000
+# 2. using spring cloud api gateway path
+# http://localhost:8763/product-enquiry/name/Trousers/availability/no/unit/10000

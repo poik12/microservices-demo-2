@@ -15,6 +15,7 @@
         <module>product-enquiry-service</module>
         <module>eureka-naming-server</module>
         <module>zuul-api-gateway-server</module>
+        <module>spring-cloud-api-gateway-service</module>
     </modules>
 
     <name>microservices-demo</name>

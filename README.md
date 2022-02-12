@@ -47,3 +47,5 @@ Dependencies
 - OpenFeign Spring Cloud Routing
 - Cloud LoadBalancer
 - Ribbon LoadBalancer
+- Zuul API Gateway
+- Gateway Spring Cloud Routing 
