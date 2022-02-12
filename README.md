@@ -10,8 +10,8 @@ Port Configuration
 |------------|-------|
 |Spring Cloud Config Server|8888|
 |Eureka Naming and Discovery Server|8761 |
-|Zuul API Gateway|8761	|
-|Spring API Gateway|8762|
+|Zuul API Gateway|8762	|
+|Spring API Gateway|8763|
 |Zipkin Distributed Tracing|	9411|
 
 |MIcroservices | Ports |
