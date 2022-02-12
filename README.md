@@ -43,6 +43,7 @@ Dependencies
 - H2 Database
 - Spring Data JPA
 - Eureka Discovery Client
+- Eureka Server
 - OpenFeign Spring Cloud Routing
 - Cloud LoadBalancer
 - Ribbon LoadBalancer
