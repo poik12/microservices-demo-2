@@ -44,3 +44,5 @@ Dependencies
 - Spring Data JPA
 - Eureka Discovery Client
 - OpenFeign Spring Cloud Routing
+- Cloud LoadBalancer
+- Ribbon LoadBalancer
