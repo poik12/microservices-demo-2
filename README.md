@@ -13,8 +13,8 @@ Port Configuration
 |Zuul API Gateway|8761	|
 |Spring API Gateway|8762|
 |Zipkin Distributed Tracing|	9411|
-|---------------------------------|
+
 |MIcroservices | Ports |
-|property-access-service|	8100|
-|product-stock-service|	8200| 8201|8202|
-|product-enquiery-service|	8300|8301|8302|
+|property-access-service|	8100 |
+|product-stock-service|	8200, 8201, 8202 |
+|product-enquiery-service| 8300, 8301, 8302 |
