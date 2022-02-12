@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>product-stock-service</artifactId>
+    <artifactId>eureka-naming-server</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -17,27 +17,10 @@
     </properties>
 
     <dependencies>
-        <!--    SPRING WEB    -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <!--    SPRING DATA JPA    -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <!--    H2 DATABASE    -->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-        </dependency>
-        <!--    EUREKA DISCOVERY CLIENT    -->
+        <!--    EUREKA SERVER    -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
-
     </dependencies>
-
 </project>

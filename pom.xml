@@ -13,6 +13,7 @@
         <module>property-access-service</module>
         <module>product-stock-service</module>
         <module>product-enquiry-service</module>
+        <module>eureka-naming-server</module>
     </modules>
 
     <name>microservices-demo</name>

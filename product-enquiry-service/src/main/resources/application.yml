@@ -12,9 +12,5 @@ spring:
       ribbon:
         enable: false
 
-#product-stock-service:
-#  ribbon:
-#    listOfServers: http://localhost:8200, http://localhost:8201
-
 
 
