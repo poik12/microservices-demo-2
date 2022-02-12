@@ -38,4 +38,6 @@ Dependencies
 - Spring Boot Starter Test
 - Spring Web
 - Spring Cloud Config
+- Spring Bootstrap
+- Spring Actuator
     
