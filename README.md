@@ -8,6 +8,11 @@ Java Version: 17 LTS
 Spring Boot Version: 2.5.7
 ---------------------------------------
 
+Accessories
+---------------------------------------
+- docker version: 20.10.12
+- docker-compose version: 1.29.2
+
 Type of architecture in microservices:
 ---------------------------------------
 
@@ -34,18 +39,28 @@ Port Configuration
 
 Dependencies
 ---------------------------------------
-- Lombok
-- Spring Boot Starter Test
-- Spring Web
-- Spring Cloud Config
-- Spring Bootstrap
-- Spring Actuator
-- H2 Database
-- Spring Data JPA
-- Eureka Discovery Client
-- Eureka Server
-- OpenFeign Spring Cloud Routing
-- Cloud LoadBalancer
-- Ribbon LoadBalancer
-- Zuul API Gateway
-- Gateway Spring Cloud Routing 
+1. Developer Tools
+   - Lombok
+2. WEB
+   - Spring Web
+3. SQL
+   - H2 Database
+   - Spring Data JPA
+4. OPS
+   - Spring Actuator
+5. Spring Cloud Config
+   - Spring Cloud Config
+6. Spring Cloud Discovery
+   - Eureka Discovery Client
+   - Eureka Server
+7. Spring Cloud Routing
+   - OpenFeign
+   - Cloud LoadBalancer
+   - Ribbon LoadBalancer
+   - Gateway
+   - Zuul API Gateway
+8. Observability
+   - Sleuth
+   - Zipkin Client
+9. Messaging
+   - Spring for RabbitMQ
