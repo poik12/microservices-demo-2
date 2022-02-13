@@ -22,13 +22,15 @@ Port Configuration
 ---------------------------------------
 
 |No.|Components | Ports |
-|---|------------|-------|
+|--|------------|-------|
 |1.|Spring Cloud Config Server| 8888 |
 |2.|Eureka Naming and Discovery Server| 8761 |
 |3.|Zuul API Gateway| 8762	|
 |4.|Spring API Gateway| 8763 |
 |5.|Zipkin Distributed Tracing| 9411 |
-|6.|RabbitMQ |	15672 |
+|6.|RabbitMQ| 15672 |
+|7.|Prometheus| 9090 |
+|8.|Grafana| 3000 |
 
 |No.|Microservices | Ports |
 |---|------------|-------|
@@ -63,5 +65,6 @@ Dependencies
 8. Observability
    - Sleuth
    - Zipkin Client
+   - Prometheus
 9. Messaging
    - Spring for RabbitMQ

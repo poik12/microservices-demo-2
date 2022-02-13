@@ -1,6 +1,8 @@
 # https://docs.docker.com/compose/compose-file/
+version: "3"
 
 services:
+  # RABBITMQ CONFIG
   rabbitmq:
     image: rabbitmq:3.9.11-management-alpine
     container_name: rabbitmq
@@ -11,12 +13,118 @@ services:
       AMQP_URL: 'amqp://rabbitmq?connection_attempts=5&retry_delay=5'
       RABBITMQ_DEFAULT_USER: 'guest'
       RABBITMQ_DEFAULT_PASS: 'guest'
+    networks:
+      - test-network
+
+  # ZIPKIN CONFIG
   zipkin:
     image: openzipkin/zipkin
     container_name: zipkin
+    environment:
+      - STORAGE_TYPE=mem
     ports:
       - "9411:9411"
+    depends_on:
+      - eureka-naming-server
+    networks:
+      - test-network
+
+  # PROMETHEUS
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - ./prometheus/config/:/etc/prometheus
+      - ./prometheus/data/prometheus:/data
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention=31d'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+    ports:
+      - "9090:9090"
+    depends_on:
+      - product-stock-service
+    networks:
+      - test-network
+
+  # GRAFANA
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
+    networks:
+      - test-network
+
+  # EUREKA NAMING SERVER
+  eureka-naming-server:
+    image: eureka-naming-server
+    ports:
+      - "8761:8761"
+    networks:
+      - test-network
+
+  # PRODUCT STOCK SERVICE
+  product-stock-service:
+    image: product-stock-service
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://eureka-naming-server:8761/eureka
+        -DZIPKIN_SERVER=http://zipkin:9411/
+    ports:
+      - "8200:8200"
+    #    links:
+    #      - zipkin
+    depends_on:
+      - eureka-naming-server
+    #      - zipkin
+    networks:
+      - test-network
+
+  # PRODUCT ENQUIRY SERVICE
+  product-enquiry-service:
+    image: product-enquiry-service
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://eureka-naming-server:8761/eureka
+        -DZIPKIN_SERVER=http://zipkin:9411/
+    ports:
+      - "8300:8300"
+    #   links:
+    #     - zipkin
+    depends_on:
+      - product-stock-service
+    #     - zipkin
+    networks:
+      - test-network
+
+  # SPRING CLOUD API GATEWAY SERVICE
+  spring-cloud-api-gateway-service:
+    image: spring-cloud-api-gateway-service
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://eureka-naming-server:8761/eureka
+        -DZIPKIN_SERVER=http://zipkin:9411/
+    #       -DENQUIRY_SERVICE=http://product-enquiry-service:9700/
+    ports:
+      - "8763:8763"
+    #   links:
+    #     - zipkin
+    depends_on:
+      - eureka-naming-server
+      - product-enquiry-service
+      - product-stock-service
+    #      - zipkin
+    networks:
+      - test-network
 
 networks:
-  postgres:
+  test-network:
     driver: bridge
+
+volumes:
+  prometheus_data: {}
