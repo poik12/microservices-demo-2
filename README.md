@@ -66,5 +66,6 @@ Dependencies
    - Sleuth
    - Zipkin Client
    - Prometheus
+   - Grafana
 9. Messaging
    - Spring for RabbitMQ
